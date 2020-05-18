@@ -1,0 +1,120 @@
+html, body, main {
+    height: 100%;
+}
+
+.calc-container {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+
+.screen {
+    background-color: rgb(221, 146, 240);
+    font-size: 50px;
+    height: 100px;
+    width: 500px;
+    padding-top: 20px;
+    text-align: right;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-family: orbitron;
+}
+.screen span {
+    margin: 35px;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.digits {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60%;
+    margin: 10px;
+}
+
+.key {
+    font-size: 35px;
+    font-weight: bold;
+    border-radius: 100px;
+    border-width: 0;
+    padding: 5px;
+    margin: 10px 5px;
+    width: 75px;
+    height: 75px;
+    background-color: rgb(211, 211, 211);
+    font-family: orbitron;
+    cursor: pointer;
+}
+
+.operation, .bracket, .result, .clear, .digit {
+    width: 75px;
+}
+
+.one{
+    width: 150px;
+}
+
+.other {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 40%;
+    margin: 10px;
+}
+
+button:nth-child(1){
+    background-color: #ffa500;
+}
+
+button:nth-child(2){
+    background-color: #f08080;
+}
+
+button:nth-child(3){
+    background-color: #20b2aa;
+}
+
+button:nth-child(4){
+    background-color: #9477af;
+}
+
+button:nth-child(5){
+    background-color: #7d93e0;
+}
+
+button:nth-child(6){
+    background-color: #ffa500;
+}
+
+button:nth-child(7){
+    background-color: #f08080;
+}
+
+button:nth-child(8){
+    background-color: #20b2aa;
+}
+
+button:nth-child(9){
+    background-color: #9477af;
+}
+
+button:nth-child(10){
+    background-color: #7d93e0;
+}

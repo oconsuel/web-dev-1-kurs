@@ -1,0 +1,25 @@
+.bg{
+    background: rgb(192, 83, 83);
+    height: 100%;
+}
+.button{
+    width: 50;
+    height: 50;
+    font-size: 25;
+    margin: 2;
+    cursor: pointer;
+}
+
+.textview{
+    width: 217;
+    margin: 5;
+    font-size: 25;
+    padding: 5;
+}
+
+.calc{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
