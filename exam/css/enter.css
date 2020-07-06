@@ -1,0 +1,65 @@
+.button {
+    margin: 0;
+    padding: 8px 24px;
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #0b0c23;
+    background-color: #f9dd79;
+    border-radius: 24px;
+    transition: background-color 100ms, box-shadow 100ms;
+}
+  
+.button:focus,
+.button:hover {
+    background-color: #f9e7a8;
+    box-shadow: 0 4px 32px rgba(249, 221, 121, 0.6);
+}
+  
+.button:active {
+    background-color: #b69e4b;
+    box-shadow: none;
+}
+
+.flex .col img {
+	width: 60%;
+	height: auto;
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+	width: 960px;
+	max-width: 100%;
+	margin: auto;
+}
+
+.flex .col {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 300px;
+	margin: 1em;
+}
+
+.flex .col .button {
+	align-self: flex-start;
+	margin-top: auto;
+}
+
+@media (max-width: 900px) {
+	.flex {
+		flex-wrap: wrap;
+	}
+}
+
+.space{
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
