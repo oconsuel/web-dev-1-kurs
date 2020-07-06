@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <section class="sec1">
+        <nav class="navbar navbar-expand-md navbar-light  sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><img src="img/nav_logo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <div class="text-center alert">
+            <h1 class="pb-3 display-3">Предприятия общественного питания</h1>
+            <hr>
+        </div>
+    </section>
+    <section class=" sec4 justify-content-center mx-0 row">
+        <form class="showrest col-md-10">
+            <div class="form-row">
+                <div class="form-group col-md-6 ">
+                    <label for="admArea">Наименование</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                    
+                </div>
+                <div class="form-group col-md-4 ">
+                    <label for="admArea">Административный округ</label>
+                    <select name="admArea" id="admArea" class="form-control">
+                        <option selected>Не выбрано</option>
+                    </select>
+                    
+                </div>
+                
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="district">Район</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                    
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="district">Район</label>
+                    <select id="district" class="form-control">
+                        <option selected>Не выбрано</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        
+        <div class="container pt-5">
+        <button type="submit" class="btn btn-primary col-md-4 align-self-center ml-auto btn1">Найти</button>
+        </div>
+        <div class="container pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Тип</th>
+                        <th>Адрес</th>
+                        <th>Действие</th>
+                    </tr>
+                </thead>
+                <tbody id="data"></tbody>
+            </table>
+        </div>
+    </section>
