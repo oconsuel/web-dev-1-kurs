@@ -1,7 +1,8 @@
 company = false;
 privilege = false;
 soc_discount = 0;
-
+display = false;
+sum = 0;
 function resolve1(data) {
     let result = [];
     var select = document.getElementById("admArea");
@@ -80,7 +81,7 @@ function selecttable(data) {
 }
 
 function count_sum() {
-    var sum = 0;
+    sum = 0;
     var count = 0;
     document.querySelectorAll(".box").forEach(elem => {
         let price = elem.querySelector(".priceset").innerHTML;
@@ -128,6 +129,10 @@ window.onload = function () {
     });
 
     document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("last_form")) {
+            console.log("debug");
+            document.querySelector("#final_sum").innerHTML = sum + 250;
+            }
         if (e.target.classList.contains("select")) {
             document.querySelectorAll(".current_res").forEach(elem => {
                 elem.classList.remove("current_res");
@@ -151,6 +156,10 @@ window.onload = function () {
                     } else {
                         document.querySelector(".privilege").disabled = true;
                     }
+                    document.querySelector("#modalName").innerHTML = r['name']; 
+                    document.querySelector("#modalAdmArea").innerHTML = r['admArea']; 
+                    document.querySelector("#modalDistrict").innerHTML = r['district']; 
+                    document.querySelector("#modalRate").innerHTML = r['rate']; 
                 }
             })
             if (!visible) {
@@ -205,31 +214,3 @@ window.onload = function () {
     });
 }
 
-function clickHandler(event) {
-    let target = event.target;
-    if (target.tagName != 'BUTTON') return;
-
-    let modalName = document.getElementById('modalName');
-    let modalAdmArea = document.getElementById('modalAdmArea');
-    let modalDistrict = document.getElementById('modalDistrict');
-    let modalAddress = document.getElementById('modalAddress');
-    let modalRate = document.getElementById('modalRate');
-
-    const api = `http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1/`;
-    const request = new XMLHttpRequest();
-    request.open('GET', api + `${target.id}`);
-
-    if (target.id != '') {
-        console.log(target.id);
-        request.onload = reqListener;
-        function reqListener() {
-
-            modalName.innerText = JSON.parse(request.response).name;
-            modalAdmArea.innerText = JSON.parse(request.response).admArea;
-            modalDistrict.innerText = JSON.parse(request.response).district;
-            modalAddress.innerText = JSON.parse(request.response).address;
-            modalRate.innerText = JSON.parse(request.response).rate;
-        }
-        request.send();
-    }
-}
