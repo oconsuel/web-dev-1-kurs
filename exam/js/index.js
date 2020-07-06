@@ -204,3 +204,32 @@ window.onload = function () {
         });
     });
 }
+
+function clickHandler(event) {
+    let target = event.target;
+    if (target.tagName != 'BUTTON') return;
+
+    let modalName = document.getElementById('modalName');
+    let modalAdmArea = document.getElementById('modalAdmArea');
+    let modalDistrict = document.getElementById('modalDistrict');
+    let modalAddress = document.getElementById('modalAddress');
+    let modalRate = document.getElementById('modalRate');
+
+    const api = `http://exam-2020-1-api.std-900.ist.mospolytech.ru/api/data1/`;
+    const request = new XMLHttpRequest();
+    request.open('GET', api + `${target.id}`);
+
+    if (target.id != '') {
+        console.log(target.id);
+        request.onload = reqListener;
+        function reqListener() {
+
+            modalName.innerText = JSON.parse(request.response).name;
+            modalAdmArea.innerText = JSON.parse(request.response).admArea;
+            modalDistrict.innerText = JSON.parse(request.response).district;
+            modalAddress.innerText = JSON.parse(request.response).address;
+            modalRate.innerText = JSON.parse(request.response).rate;
+        }
+        request.send();
+    }
+}
