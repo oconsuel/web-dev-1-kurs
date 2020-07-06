@@ -133,7 +133,7 @@ button{
 }
 
 .box:hover{
-	height: 400px;
+	height: 430px;
 }
 .box .imgBx{
 	position: absolute;
@@ -157,17 +157,17 @@ button{
 }
 
 .box:before{
-	content: '';
+	/* content: '';
 	position:absolute;
 	top:-2px;
 	bottom: -2px;
 	left:-2px;
 	right: -2px;
-	background: #aedad0;
+	background: #aedad0; */
 }
 
 .box:after{
-	content: '';
+	 content: '';
 	position: absolute;
 	top: -2px;
 	bottom: -2px;
@@ -175,15 +175,15 @@ button{
 	right: -2px;
 	z-index: -2;
 	filter: blur(40px);
-	background: #aedad0;
+	background: #aedad0; 
 }
 
 .box .content1{
 	position: absolute;
-	bottom: 0;
+	/* bottom: 30px; */
 	left: 10px;
 	right: 10px;
-	bottom: 10px;
+	bottom: 60px;
 	height: 90px;
 	display: flex;
 	justify-content: center;
@@ -193,6 +193,22 @@ button{
 	transition: 0.5s;
 
 }
+
+.box_range {
+	position: absolute;
+	bottom: 5px;
+}
+
+.slider-handle::before {
+	content: attr(aria-valuenow);
+	display: block;
+	color: white;
+  }
+
+/* #range::before {
+	content: attr(aria-valuenow);
+	font-size: large;
+} */
 
 .box:hover .content1{
 	opacity: 1;
@@ -241,4 +257,20 @@ button{
 
 .sec6{
 	padding-bottom: 50px;
+}
+
+.price {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.select {
+	cursor: pointer;
+}
+
+.select:focus {outline:0;}
+
+.current_res {
+	border: 2px solid;
 }

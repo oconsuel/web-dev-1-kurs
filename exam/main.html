@@ -47,42 +47,48 @@
             <hr>
         </div>
     </section>
-    <section class=" sec4 justify-content-center mx-0 row">
-        <form class="showrest col-md-10">
-            <div class="form-row">
-                <div class="form-group col-md-6 ">
-                    <label for="admArea">Наименование</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                    
-                </div>
-                <div class="form-group col-md-4 ">
-                    <label for="admArea">Административный округ</label>
-                    <select name="admArea" id="admArea" class="form-control">
-                        <option selected>Не выбрано</option>
-                    </select>
-                    
-                </div>
-                
-            </div>
+    <section class="row justify-content-center mx-0">
+        <div class="text-center py-5 col-md-7">
+            <h2 class="pb-3">Выбор предприятия общественного питания</h2>
+            <div class="heading-line mx-auto"></div>
+        </div>
 
+        <form class="col-md-7">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="district">Район</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                    
+                    <label for="admArea">Административный округ</label>
+                    <select id="admArea" class="form-control">
+                        <option selected>Не выбрано</option>
+                    </select>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="district">Район</label>
                     <select id="district" class="form-control">
                         <option selected>Не выбрано</option>
                     </select>
                 </div>
             </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputTypeObject">Вид Объекта</label>
+                    <select id="inputTypeObject" class="form-control">
+                        <option selected>Не выбрано</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputState">Соц. скидки</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>Не выбрано</option>
+                        <option value="Есть">Есть</option>
+                        <option value="Нет">Нет</option>
+                    </select>
+                </div>
+            </div>
         </form>
-        
-        <div class="container pt-5">
-        <button type="submit" class="btn btn-primary col-md-4 align-self-center ml-auto btn1">Найти</button>
-        </div>
+
+        <button class="btn btn-primary col-md-7" id="btnTable">Найти</button>
+
         <div class="container pt-3">
             <table class="table">
                 <thead>
@@ -93,7 +99,23 @@
                         <th>Действие</th>
                     </tr>
                 </thead>
-                <tbody id="data"></tbody>
+                <tbody id="restTable"></tbody>
             </table>
+        </div>
+
+        <div class="col-md-7">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Предыдущая</a>
+                    </li>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">1</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">2</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">3</a></li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-disabled="true">Следующая</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </section>
