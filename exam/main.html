@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.15.1/d3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -48,46 +48,95 @@
         </div>
     </section>
     <section class="row justify-content-center mx-0">
-        <div class="text-center py-5 col-md-7">
-            <h2 class="pb-3">Выбор предприятия общественного питания</h2>
-            <div class="heading-line mx-auto"></div>
-        </div>
-
         <form class="col-md-7">
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="admArea">Административный округ</label>
-                    <select id="admArea" class="form-control">
-                        <option selected>Не выбрано</option>
-                    </select>
+                    <label for="exampleInputEmail1">Наименование</label>
+                    <input type="email" class="form-control" id="inputName" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="district">Район</label>
-                    <select id="district" class="form-control">
+                    <label for="inputAdmArea">Административный округ</label>
+                    <select id="inputAdmArea" class="form-control">
                         <option selected>Не выбрано</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputTypeObject">Вид Объекта</label>
-                    <select id="inputTypeObject" class="form-control">
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1">Количество посадочных мест</label>
+                    <div class="row">
+                        <div class="input-group mb-2 col-md-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">От</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                placeholder="">
+                        </div>
+                        <div class="input-group mb-2 col-md-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">До</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputState">Является сетевым</label>
+                    <select id="inputState" class="form-control">
                         <option selected>Не выбрано</option>
+                        <option value="Нет">Да</option>
+                        <option value="Есть">Нет</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputState">Соц. скидки</label>
+                    <label for="inputDistrict">Район</label>
+                    <select id="inputDistrict" class="form-control">
+                        <option selected>Не выбрано</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1">Дата создания</label>
+                    <div class="row">
+                        <div class="input-group mb-2 col-md-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">С</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                placeholder="">
+                        </div>
+                        <div class="input-group mb-2 col-md-6">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">По</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
+                                placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputState">Льготы</label>
                     <select id="inputState" class="form-control">
                         <option selected>Не выбрано</option>
-                        <option value="Есть">Есть</option>
                         <option value="Нет">Нет</option>
+                        <option value="Есть">Есть</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputTypeObject">Тип</label>
+                    <select id="inputTypeObject" class="form-control">
+                        <option selected>Не выбрано</option>
                     </select>
                 </div>
             </div>
         </form>
 
-        <button class="btn btn-primary col-md-7" id="btnTable">Найти</button>
+        <div class="row col-md-12 justify-content-center">
+            <button class="btn btn-dark col-md-3" id="btnTable">Найти</button>
+        </div>
 
         <div class="container pt-3">
             <table class="table">
@@ -99,23 +148,7 @@
                         <th>Действие</th>
                     </tr>
                 </thead>
-                <tbody id="restTable"></tbody>
+                <tbody id="data"></tbody>
             </table>
         </div>
-
-        <div class="col-md-7">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Предыдущая</a>
-                    </li>
-                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">1</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">2</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">3</a></li>
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" aria-disabled="true">Следующая</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </section>
+</section>

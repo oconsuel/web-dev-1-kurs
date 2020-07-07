@@ -3,6 +3,7 @@ privilege = false;
 soc_discount = 0;
 display = false;
 sum = 0;
+
 function resolve1(data) {
     let result = [];
     var select = document.getElementById("admArea");
@@ -63,6 +64,7 @@ function resolve2_1(data) {
     });
 }
 
+
 function selecttable(data) {
     if (data.length) {
         var cell = [];
@@ -83,12 +85,13 @@ function selecttable(data) {
 function count_sum() {
     sum = 0;
     var count = 0;
-    document.querySelectorAll(".box").forEach(elem => {
+    document.querySelectorAll(".box ").forEach(elem => {
         let price = elem.querySelector(".priceset").innerHTML;
         let qty = elem.querySelector(".range_value span").innerHTML;
 
         count += parseInt(qty);
         sum += price * qty;
+        
     });
     if (company) {
         sum *= 2.5;
@@ -97,7 +100,8 @@ function count_sum() {
     if (privilege && soc_discount) {
         sum *= soc_discount;
     }
-    document.querySelector(".final_qty").innerHTML = count;
+    sum = Math.floor(sum);
+    document.querySelector(".final_qty ").innerHTML = count;
     document.querySelector(".final_sum").innerHTML = sum;
 }
 
@@ -125,12 +129,25 @@ window.onload = function () {
             var val = e.target.parentElement.querySelector(".range_value span");
             val.innerHTML = e.target.value;
             count_sum();
+            document.querySelectorAll(".position").forEach(elem => {
+                elem.remove();
+            });
+            document.querySelectorAll(".box").forEach(elem => {
+                let name = elem.querySelector(".nameset p").innerHTML;
+                let sum = elem.querySelector(".priceset").innerHTML;
+                let kol = elem.querySelector(".range_value span").innerHTML;
+                let res = kol * sum;
+                if (res) {
+                    createPos(name, kol, sum, res);
+                }
+            });
+
         });
     });
 
     document.addEventListener("click", function(e) {
         if (e.target.classList.contains("last_form")) {
-            console.log("debug");
+            dop_opt();
             document.querySelector("#final_sum").innerHTML = sum + 250;
             }
         if (e.target.classList.contains("select")) {
@@ -212,5 +229,66 @@ window.onload = function () {
             count_sum();
         });
     });
+
+    btnconfirmation.onclick = function () {
+            let not = document.getElementById('notification');
+            not.innerHTML = "<div class=\"alert alert-success\" role=\"alert\">Спасибо за заказ! Процесс запущен!</div>";
+            setTimeout(function () {
+                not.innerHTML = '';
+            }, 3000);
+        
+    }
 }
 
+function createPos(name, qty, sum, res) {
+    var posEl = document.createElement("div");
+    posEl.classList.add("position");
+    posEl.style.width = "100%";
+    posEl.style.border = "2px solid";
+    posEl.style.padding = "20px";
+    posEl.style.margin = "20px";
+
+    var nameEl = document.createElement("div");
+    nameEl.classList.add("col-md-3");
+    nameEl.style.display = "inline-block";
+    nameEl.innerHTML = name;
+    var sumEl = document.createElement("div");
+    sumEl.classList.add("col-md-3");
+    sumEl.style.display = "inline-block";
+    sumEl.innerHTML = qty + " X " + sum;
+    var resEl = document.createElement("div");
+    resEl.classList.add("col-md-3");
+    resEl.style.display = "inline-block";
+    resEl.innerHTML = res + " Р ";
+    posEl.appendChild(nameEl);
+    posEl.appendChild(sumEl);
+    posEl.appendChild(resEl);
+    document.querySelector("#positions").appendChild(posEl);
+}
+
+function dop_opt() {
+    var sec = document.querySelector(".dop_options");
+    var comp = document.querySelector("#dop_opt_comp");
+    var priv = document.querySelector("#dop_opt_priv");
+    if (company || privilege) {
+        sec.style.display = "block";
+        if (company) {
+            comp.style.display = "block";
+            comp.style.margin = "50px";
+            comp.innerHTML = "На компанию";
+        } else {
+            comp.style.display = "none";
+        }
+
+        if (privilege) {
+            priv.style.display = "block";
+            priv.style.margin = "50px";
+            priv.innerHTML = "Соц скидка - " + (soc_discount * 100) + "%";
+        } else {
+            priv.style.display = "none";
+        }
+
+    } else {
+        sec.style.display = "none";
+    }
+}
